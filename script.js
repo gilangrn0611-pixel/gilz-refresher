@@ -37,13 +37,21 @@ async function handle(){
     if (!res.ok) throw new Error(data.error || 'Gagal');
 
     const a = data.account;
-    show('ok', `<div style="font-weight:700;margin-bottom:8px;">✅ Akun Asli Terhubung</div>
-      <div style="font-family:monospace;font-size:12px;background:#0c0e15;padding:10px;border-radius:8px;margin-bottom:10px;word-break:break-all;">${data.newCookie}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:13px;">
+    
+    show('ok', `<div style="font-weight:700;margin-bottom:12px;font-size:16px;">✅ Akun Asli Terhubung</div>
+      <div style="font-family:monospace;font-size:12px;background:#0c0e15;padding:10px;border-radius:8px;margin-bottom:14px;word-break:break-all;max-height:80px;overflow-y:auto;">${data.newCookie}</div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:14px;margin-bottom:16px;">
         <div>👤 Username</div><div><b>${a.username}</b></div>
         <div>🏷️ Display Name</div><div>${a.displayName}</div>
-        <div>💰 Robux</div><div>${a.robux}</div>
+        <div>🆔 User ID</div><div>${a.id}</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:14px;padding-top:14px;border-top:1px dashed #232734;">
+        <div>💰 Robux</div><div><b>${a.robux}</b></div>
+        <div>🔐 Status 2FA</div><div><b>${a.twoFA}</b></div>
       </div>`);
+      
   }catch(e){ 
     show('err','❌ ' + e.message); 
   } finally { 
